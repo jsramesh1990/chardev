@@ -30,21 +30,25 @@ simulated-chardev/
 ```
 
 ## Build & Load
+
 ```
 make
 sudo insmod src/simulated_chardev.ko
 dmesg | tail
 sudo mknod /dev/simchardev c <major> 0
 sudo chmod 666 /dev/simchardev
+
 ```
 ##    Features Implemented
+
 Driver Capabilities
 
 Registers a dynamic major number
 
 Creates a simulated character device
 
-Implements:
+#   Implements:
+
 ```
 open()
 
@@ -56,7 +60,8 @@ release()
 
 unlocked_ioctl()
 ```
-##Maintains:
+
+##   Maintains:
 
 Circular buffer
 
@@ -74,25 +79,32 @@ SIMC_GET_LAST_MSG_INFO → Get last message’s checksum + sequence
 
 ##    Build Instructions
 1. Install kernel headers
-   ```
+
+```
 sudo apt install build-essential linux-headers-$(uname -r)
 ```
+
 3. Build the kernel module
 
 From project root:
+
 ```
 make
 ```
 
 If successful, it generates:
+
 ```
 src/simulated_chardev.ko
 ```
-Working Flow
+
+##   Working Flow
+
 <img width="677" height="627" alt="char" src="https://github.com/user-attachments/assets/b70f0c97-0a66-4253-8a36-06b74d8da114" />
 
 
 Working Diagram
+
 ```
 flowchart TD
     A[load module: insmod] --> B[simchardev_init()]
@@ -120,16 +132,14 @@ flowchart TD
 ```
 
 #  Test:
+
 ```
 python3 user/test_client.py
 ```
+
 #  Unload
+
 ```
 sudo rmmod simulated_chardev
-
----
-
-This gives you a **ready-to-use, full simulation project** demonstrating all the typical **char device driver logic, sequence handling, IOCTL, concurrency, buffer management, and testing workflow**.
-
 ---
 
