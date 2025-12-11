@@ -124,6 +124,11 @@ python3 user/test_client.py
 #  Unload
 
 ```
+sudo rmmod simulated_charde
+sudo rm /dev/simchardev
 sudo rmmod simulated_chardev
----
+```
 
+#    License
+
+MIT License – feel free to use in any embedded or Linux project.
