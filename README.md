@@ -11,6 +11,7 @@ This project simulates a **full Linux char device driver** with:
 - Userspace Python client for testing
 
 ## Structure
+```
 simulated-chardev/
 │
 ├── src/
@@ -26,10 +27,10 @@ simulated-chardev/
 │
 └── README.md                   # Documentation
 
-
+```
 
 ## Build & Load
-```bash
+```
 make
 sudo insmod src/simulated_chardev.ko
 dmesg | tail
