@@ -61,22 +61,6 @@ release()
 unlocked_ioctl()
 ```
 
-##   Maintains:
-
-Circular buffer
-
-Sequence numbers
-
-CRC32 checksum for each message
-
-Provides IOCTLs:
-
-SIMC_RESET_BUFFER → Clear buffer
-
-SIMC_GET_STATUS → Get message count
-
-SIMC_GET_LAST_MSG_INFO → Get last message’s checksum + sequence
-
 ##    Build Instructions
 1. Install kernel headers
 
