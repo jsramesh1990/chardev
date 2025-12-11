@@ -36,8 +36,8 @@ sudo insmod src/simulated_chardev.ko
 dmesg | tail
 sudo mknod /dev/simchardev c <major> 0
 sudo chmod 666 /dev/simchardev
-
-Features Implemented
+```
+##    Features Implemented
 Driver Capabilities
 
 Registers a dynamic major number
@@ -45,7 +45,7 @@ Registers a dynamic major number
 Creates a simulated character device
 
 Implements:
-
+```
 open()
 
 read()
@@ -55,8 +55,8 @@ write()
 release()
 
 unlocked_ioctl()
-
-Maintains:
+```
+##Maintains:
 
 Circular buffer
 
@@ -72,27 +72,28 @@ SIMC_GET_STATUS → Get message count
 
 SIMC_GET_LAST_MSG_INFO → Get last message’s checksum + sequence
 
-🔧 Build Instructions
+##    Build Instructions
 1. Install kernel headers
+   ```
 sudo apt install build-essential linux-headers-$(uname -r)
-
-2. Build the kernel module
+```
+3. Build the kernel module
 
 From project root:
-
+```
 make
-
+```
 
 If successful, it generates:
-
+```
 src/simulated_chardev.ko
-
+```
 Working Flow
 <img width="677" height="627" alt="char" src="https://github.com/user-attachments/assets/b70f0c97-0a66-4253-8a36-06b74d8da114" />
 
 
 Working Diagram
-
+```
 flowchart TD
     A[load module: insmod] --> B[simchardev_init()]
     B --> C[register_chrdev]
@@ -116,12 +117,14 @@ flowchart TD
 
     A --> P[unload module: rmmod]
     P --> Q[unregister_chrdev]
+```
 
-
-#  Test
+#  Test:
+```
 python3 user/test_client.py
-
+```
 #  Unload
+```
 sudo rmmod simulated_chardev
 
 ---
@@ -130,6 +133,3 @@ This gives you a **ready-to-use, full simulation project** demonstrating all the
 
 ---
 
-If you want, I can also **add a full flow diagram in the README** showing **sequence from kernel module → buffer → Python client → IOCTL** visually, so it becomes fully educational and GitHub-ready.  
-
-Do you want me to do that?
